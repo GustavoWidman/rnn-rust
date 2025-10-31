@@ -1,0 +1,9 @@
+# rust artifacts
+/target
+
+# datasets
+/data
+*.csv
+
+# python test files for performance comparison
+*.py
