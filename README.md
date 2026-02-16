@@ -7,11 +7,21 @@
 ![Status](https://img.shields.io/badge/status-production--ready-green.svg)
 ![Version](https://img.shields.io/badge/version-0.1.0-blueviolet.svg)
 
-**A from-scratch implementation of Recurrent Neural Networks in pure Rust, without external ML frameworks**
+**A from-scratch implementation of Recurrent Neural Networks in pure Rust,
+without external ML frameworks**
 
-[Features](#-features) • [Quick Start](#-quick-start) • [Architecture](#-architecture) • [Documentation](#-documentation) • [License](#-license)
+[Features](#-features) • [Quick Start](#-quick-start) •
+[Architecture](#-architecture) • [Documentation](#-documentation) •
+[License](#-license)
 
 </div>
+
+---
+
+## Read the Blog!
+
+Want to read the full story of how i built this? Check out the blog post:
+[blog.guswid.com/rnn-rust](https://blog.guswid.com/rnn-rust)
 
 ---
 
@@ -35,27 +45,38 @@
 
 ## 🎯 Overview
 
-**RNN-Rust** is a sophisticated, educational implementation of a Recurrent Neural Network (RNN) designed specifically for **time-series sequence learning and classification**. Built entirely in pure Rust without relying on external machine learning frameworks like TensorFlow or PyTorch, this project demonstrates:
+**RNN-Rust** is a sophisticated, educational implementation of a Recurrent
+Neural Network (RNN) designed specifically for **time-series sequence learning
+and classification**. Built entirely in pure Rust without relying on external
+machine learning frameworks like TensorFlow or PyTorch, this project
+demonstrates:
 
-- ✅ **From-scratch RNN mechanics** including hidden state propagation and BPTT (Backpropagation Through Time)
-- ✅ **Generic, type-safe architecture** using Rust's const generics for compile-time dimension specification
+- ✅ **From-scratch RNN mechanics** including hidden state propagation and BPTT
+  (Backpropagation Through Time)
+- ✅ **Generic, type-safe architecture** using Rust's const generics for
+  compile-time dimension specification
 - ✅ **Production-ready code organization** with clear separation of concerns
-- ✅ **Real-world application** to financial fraud detection using the Kaggle credit card dataset
-- ✅ **Extensible design** supporting custom activation functions, loss functions, and optimizers
-- ✅ **Comprehensive evaluation metrics** for both classification and regression tasks
+- ✅ **Real-world application** to financial fraud detection using the Kaggle
+  credit card dataset
+- ✅ **Extensible design** supporting custom activation functions, loss
+  functions, and optimizers
+- ✅ **Comprehensive evaluation metrics** for both classification and regression
+  tasks
 
 ### Primary Use Case
 
-This implementation was originally developed for **credit card fraud detection**, achieving >92% accuracy on the Kaggle credit card dataset (~285K transactions, 29 features per timestep).
+This implementation was originally developed for **credit card fraud
+detection**, achieving >92% accuracy on the Kaggle credit card dataset (~285K
+transactions, 29 features per timestep).
 
-| Aspect | Details |
-|--------|---------|
-| **Model Type** | Sequence-to-sequence RNN with single output |
-| **Activation Functions** | Tanh, ReLU, Sigmoid (extensible) |
-| **Loss Function** | Mean Squared Error (MSE) |
-| **Optimizer** | Stochastic Gradient Descent (SGD) with configurable learning rates |
-| **Language** | Rust 2024 edition |
-| **Key Dependencies** | serde, chrono, clap, env_logger, eyre |
+| Aspect                   | Details                                                            |
+| ------------------------ | ------------------------------------------------------------------ |
+| **Model Type**           | Sequence-to-sequence RNN with single output                        |
+| **Activation Functions** | Tanh, ReLU, Sigmoid (extensible)                                   |
+| **Loss Function**        | Mean Squared Error (MSE)                                           |
+| **Optimizer**            | Stochastic Gradient Descent (SGD) with configurable learning rates |
+| **Language**             | Rust 2024 edition                                                  |
+| **Key Dependencies**     | serde, chrono, clap, env_logger, eyre                              |
 
 ---
 
@@ -63,26 +84,28 @@ This implementation was originally developed for **credit card fraud detection**
 
 ### Core Capabilities
 
-| Feature | Description |
-|---------|-------------|
-| 🔄 **RNN Processing** | Full recurrent neural network with hidden state propagation through time |
-| 🎯 **Backpropagation Through Time** | Complete BPTT implementation for gradient computation |
-| 📊 **Flexible Input/Output** | Support for variable feature dimensions and multi-dimensional outputs |
-| 🔧 **Type Safety** | Compile-time dimension checking via const generics |
-| ⚙️ **Customizable Activation** | Tanh, ReLU, Sigmoid with extensible trait-based design |
-| 📈 **Comprehensive Metrics** | Classification (accuracy, precision, recall, F1) & regression (MAE, RMSE, R²) evaluation |
-| 🎛️ **Configurable Training** | Adjustable learning rates, epochs, train/test splits, evaluation intervals |
-| 💾 **Efficient Data Handling** | CSV parsing with automatic sequence grouping and min-max normalization |
-| 🖨️ **Beautiful Logging** | Timestamped, color-coded console output with verbosity control |
-| ♻️ **Memory Efficient** | Reusable computation workspaces and in-place operations |
+| Feature                             | Description                                                                              |
+| ----------------------------------- | ---------------------------------------------------------------------------------------- |
+| 🔄 **RNN Processing**               | Full recurrent neural network with hidden state propagation through time                 |
+| 🎯 **Backpropagation Through Time** | Complete BPTT implementation for gradient computation                                    |
+| 📊 **Flexible Input/Output**        | Support for variable feature dimensions and multi-dimensional outputs                    |
+| 🔧 **Type Safety**                  | Compile-time dimension checking via const generics                                       |
+| ⚙️ **Customizable Activation**      | Tanh, ReLU, Sigmoid with extensible trait-based design                                   |
+| 📈 **Comprehensive Metrics**        | Classification (accuracy, precision, recall, F1) & regression (MAE, RMSE, R²) evaluation |
+| 🎛️ **Configurable Training**        | Adjustable learning rates, epochs, train/test splits, evaluation intervals               |
+| 💾 **Efficient Data Handling**      | CSV parsing with automatic sequence grouping and min-max normalization                   |
+| 🖨️ **Beautiful Logging**            | Timestamped, color-coded console output with verbosity control                           |
+| ♻️ **Memory Efficient**             | Reusable computation workspaces and in-place operations                                  |
 
 ### Advanced Features
 
-- **Sequence Grouping**: Automatically groups timesteps by sequence identifier from CSV data
+- **Sequence Grouping**: Automatically groups timesteps by sequence identifier
+  from CSV data
 - **Normalization**: Min-max scaling with optional denormalization support
 - **Dataset Splitting**: Automatic train/test split with reproducible sampling
 - **Lazy Evaluation**: Matrix operations use lazy evaluation where possible
-- **CLI Integration**: Command-line argument parsing with customizable logging levels
+- **CLI Integration**: Command-line argument parsing with customizable logging
+  levels
 
 ---
 
@@ -163,7 +186,7 @@ fn main() -> eyre::Result<()> {
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    RNN-Rust System Architecture              │
+│                    RNN-Rust System Architecture             │
 └─────────────────────────────────────────────────────────────┘
 
                               ┌──────────────┐
@@ -185,12 +208,12 @@ fn main() -> eyre::Result<()> {
               ┌──────────────────┼──────────────────┐
               │                  │                  │
               ▼                  ▼                  ▼
-        ┌──────────┐      ┌──────────┐      ┌──────────┐
+        ┌──────────┐      ┌──────────┐     ┌──────────┐
         │Training  │      │Validation│     │   Test   │
         │  Set     │      │   Set    │     │   Set    │
         └─────┬────┘      └──────────┘     └──────────┘
               │
-    ┌─────────▼──────────────────────────┐
+    ┌─────────▼───────────────────────────┐
     │  Training Loop (Per Epoch)          │
     │                                     │
     │  For each sequence in training:     │
@@ -210,16 +233,16 @@ fn main() -> eyre::Result<()> {
     │             │                       │
     │  ┌──────────▼───────────────────┐   │
     │  │ Optimizer Update             │   │
-    │  │ └─ SGD: θ = θ - α∇L         │   │
+    │  │ └─ SGD: θ = θ - α∇L          │   │
     │  └──────────────────────────────┘   │
     └─────────────────────────────────────┘
               │
     ┌─────────▼──────────────────────────┐
-    │  Evaluation & Metrics Calculation   │
+    │  Evaluation & Metrics Calculation  │
     │  ├─ Train Set Metrics              │
     │  ├─ Validation Set Metrics         │
     │  └─ Detailed Statistics            │
-    └─────────────────────────────────────┘
+    └────────────────────────────────────┘
 ```
 
 ### Neural Network Forward & Backward Pass
@@ -247,8 +270,8 @@ Reverse iterate through sequence from t to 1:
 
   2. Hidden State Gradients (Backprop through time):
      ∂L/∂hₜ = (∂L/∂yₜ @ Wₕᵧᵀ) + (∂L/∂hₜ₊₁ @ Wₕₕᵀ)
-               └──────────┬──────────┘   └────────┬────────┘
-                  From Output           From Next Step
+              └─────┬─────┘    └──────┬─────┘
+               From Output      From Next Step
 
   3. Weight Gradients (Accumulate):
      ∂L/∂Wₓₕ += ∂L/∂hₜ ⊗ xₜ     (outer product)
@@ -310,16 +333,16 @@ Total Source Code: 1,184 lines of production Rust
 
 ### Key Statistics
 
-| Metric | Value |
-|--------|-------|
-| **Total Lines of Code** | 1,184 (Rust) |
-| **Core Model Code** | 551 lines |
-| **Data Handling** | 260 lines |
-| **Utilities** | 228 lines |
-| **Main/Entry Point** | 106 lines |
-| **Supported Activations** | 3 (Tanh, ReLU, Sigmoid) |
-| **Supported Loss Functions** | 1 (MSE) |
-| **Evaluation Metrics** | 10+ (accuracy, precision, recall, F1, MAE, RMSE, R², etc.) |
+| Metric                       | Value                                                      |
+| ---------------------------- | ---------------------------------------------------------- |
+| **Total Lines of Code**      | 1,184 (Rust)                                               |
+| **Core Model Code**          | 551 lines                                                  |
+| **Data Handling**            | 260 lines                                                  |
+| **Utilities**                | 228 lines                                                  |
+| **Main/Entry Point**         | 106 lines                                                  |
+| **Supported Activations**    | 3 (Tanh, ReLU, Sigmoid)                                    |
+| **Supported Loss Functions** | 1 (MSE)                                                    |
+| **Evaluation Metrics**       | 10+ (accuracy, precision, recall, F1, MAE, RMSE, R², etc.) |
 
 ---
 
@@ -327,7 +350,8 @@ Total Source Code: 1,184 lines of production Rust
 
 ### 1. RNN Model (`model/mod.rs`)
 
-The core RNN struct with generic const parameters for type-safe, compile-time dimension verification.
+The core RNN struct with generic const parameters for type-safe, compile-time
+dimension verification.
 
 ```rust
 /// Recurrent Neural Network with configurable dimensions
@@ -388,7 +412,8 @@ impl<const INPUT: usize, const HIDDEN: usize, const OUTPUT: usize>
 
 ### 2. Activation Functions (`model/activation.rs`)
 
-Extensible enum-based activation function system with both single-element and vectorized operations.
+Extensible enum-based activation function system with both single-element and
+vectorized operations.
 
 ```rust
 pub enum ActivationFunction {
@@ -424,7 +449,8 @@ impl ActivationFunction {
 
 ### 3. Dataset Management (`data/mod.rs`)
 
-Flexible, generic dataset handling with automatic sequence grouping and normalization.
+Flexible, generic dataset handling with automatic sequence grouping and
+normalization.
 
 ```rust
 /// Single timestep with features and labels
@@ -726,25 +752,26 @@ Test Evaluation:
 
 ### Memory Usage
 
-| Component | Memory per Model |
-|-----------|------------------|
-| Input → Hidden matrix (29×10) | ~2.3 KB |
-| Hidden → Hidden matrix (10×10) | ~0.8 KB |
-| Hidden → Output matrix (10×1) | ~0.08 KB |
-| Biases | ~0.1 KB |
-| **Total per model** | **~3.3 KB** |
+| Component                      | Memory per Model |
+| ------------------------------ | ---------------- |
+| Input → Hidden matrix (29×10)  | ~2.3 KB          |
+| Hidden → Hidden matrix (10×10) | ~0.8 KB          |
+| Hidden → Output matrix (10×1)  | ~0.08 KB         |
+| Biases                         | ~0.1 KB          |
+| **Total per model**            | **~3.3 KB**      |
 
 ### Computational Complexity
 
-| Operation | Complexity | Notes |
-|-----------|-----------|-------|
-| Forward pass per timestep | O(INPUT × HIDDEN + HIDDEN²) | Recurrent connection |
-| Backward pass (BPTT) | O(HIDDEN × seq_length) | Through time dimension |
-| Weight update (SGD) | O(INPUT × HIDDEN + HIDDEN²) | Per epoch |
+| Operation                 | Complexity                  | Notes                  |
+| ------------------------- | --------------------------- | ---------------------- |
+| Forward pass per timestep | O(INPUT × HIDDEN + HIDDEN²) | Recurrent connection   |
+| Backward pass (BPTT)      | O(HIDDEN × seq_length)      | Through time dimension |
+| Weight update (SGD)       | O(INPUT × HIDDEN + HIDDEN²) | Per epoch              |
 
 ### Optimization Tips
 
-1. **Batch Processing**: Current implementation processes one sequence at a time. For better throughput, consider mini-batching.
+1. **Batch Processing**: Current implementation processes one sequence at a
+   time. For better throughput, consider mini-batching.
 
 2. **Learning Rate**: Start with 0.01, adjust based on loss convergence:
    - Too high → divergence or oscillation
@@ -755,9 +782,11 @@ Test Evaluation:
    - **ReLU**: Faster training but can have "dying ReLU" problem
    - **Sigmoid**: Use for binary output in [0,1]
 
-4. **Sequence Length**: Longer sequences = higher computational cost but more context for prediction.
+4. **Sequence Length**: Longer sequences = higher computational cost but more
+   context for prediction.
 
-5. **Normalization**: Always normalize inputs and targets before training for better convergence.
+5. **Normalization**: Always normalize inputs and targets before training for
+   better convergence.
 
 ---
 
@@ -765,29 +794,39 @@ Test Evaluation:
 
 ### Q: Why implement RNN from scratch instead of using TensorFlow?
 
-**A:** This project serves educational purposes, demonstrating the core mechanics of RNNs and BPTT. It's ideal for learning how neural networks work internally. For production ML systems, established frameworks are recommended due to optimizations, GPU support, and extensive testing.
+**A:** This project serves educational purposes, demonstrating the core
+mechanics of RNNs and BPTT. It's ideal for learning how neural networks work
+internally. For production ML systems, established frameworks are recommended
+due to optimizations, GPU support, and extensive testing.
 
 ### Q: What are the key differences between this and LSTM/GRU?
 
 **A:** This is a vanilla RNN. Key differences:
+
 - **LSTM**: Adds memory cells with gates to handle vanishing gradients
 - **GRU**: Simplified LSTM with fewer parameters
-- **Vanilla RNN** (this project): Simpler but more prone to vanishing gradient problems with long sequences
+- **Vanilla RNN** (this project): Simpler but more prone to vanishing gradient
+  problems with long sequences
 
 ### Q: Can I add GPU support?
 
 **A:** The current implementation uses CPU only. To add GPU support:
+
 1. Consider using `CudaText` or similar Rust GPU libraries
 2. Or rewrite matrix operations for GPU acceleration
 3. Or use `rust-gpu` for GPGPU programming
 
 ### Q: How do I handle variable-length sequences?
 
-**A:** The current implementation groups sequences by ID and processes them in order. Variable lengths are naturally supported as the RNN processes one timestep at a time. However, batch processing would require padding.
+**A:** The current implementation groups sequences by ID and processes them in
+order. Variable lengths are naturally supported as the RNN processes one
+timestep at a time. However, batch processing would require padding.
 
 ### Q: What's the learning rate schedule?
 
-**A:** Currently, learning rate is constant throughout training. To implement scheduling:
+**A:** Currently, learning rate is constant throughout training. To implement
+scheduling:
+
 ```rust
 // Example: Decay every 10 epochs
 if epoch % 10 == 0 {
@@ -798,6 +837,7 @@ if epoch % 10 == 0 {
 ### Q: Can I save/load trained models?
 
 **A:** The current implementation doesn't serialize models. To add this:
+
 1. Implement `serde::Serialize` and `Deserialize` for RNN struct
 2. Save weights and hyperparameters to JSON/binary
 3. Load and restore in new training session
@@ -805,6 +845,7 @@ if epoch % 10 == 0 {
 ### Q: What activation functions are best for my use case?
 
 **A:**
+
 - **Fraud Detection**: Tanh (symmetric, prevents saturation)
 - **Binary Classification**: Sigmoid output layer + Tanh/ReLU hidden
 - **Regression**: Linear or Tanh output
@@ -879,7 +920,10 @@ To extend the RNN:
 
 ## 🚀 Performance Evolution
 
-This project underwent significant performance optimization, achieving a **~20x speedup** from initial implementation to final optimized version. What started as a functionally correct but inefficient implementation was systematically refined through careful profiling and strategic memory management improvements.
+This project underwent significant performance optimization, achieving a **~20x
+speedup** from initial implementation to final optimized version. What started
+as a functionally correct but inefficient implementation was systematically
+refined through careful profiling and strategic memory management improvements.
 
 ### The Journey: From 60+ Seconds to 3 Seconds
 
@@ -891,15 +935,20 @@ This project underwent significant performance optimization, achieving a **~20x 
   Status: Functional but unoptimized ❌
 ```
 
-The initial implementation worked correctly but suffered from several critical performance issues:
+The initial implementation worked correctly but suffered from several critical
+performance issues:
 
 **Main Problems:**
+
 - 🔴 Excessive `clone()` calls throughout the codebase
 - 🔴 Unnecessary memory copy operations on vectors and matrices
-- 🔴 Wasteful use of iterator methods like `.fold()` that caused unnecessary moves
-- 🔴 No memory reuse strategy - new allocations for temporary computations every iteration
+- 🔴 Wasteful use of iterator methods like `.fold()` that caused unnecessary
+  moves
+- 🔴 No memory reuse strategy - new allocations for temporary computations every
+  iteration
 
 **Example of the inefficiencies:**
+
 ```rust
 // ❌ Wasteful cloning and copying
 pub fn forward(&self, sequence: &Sequence<INPUT, OUTPUT>) -> Vec<Vector<OUTPUT>> {
@@ -925,6 +974,7 @@ let total: f64 = matrix_operations
 #### **Optimization 1: Eliminate Clones & Memory Copies**
 
 **The Fix:**
+
 - ✅ Removed unnecessary `clone()` calls by using references and borrowing
 - ✅ Eliminated intermediate vector copies where they weren't needed
 - ✅ Used `&` to pass data instead of ownership transfers
@@ -945,14 +995,18 @@ pub fn forward(&self, sequence: &Sequence<INPUT, OUTPUT>) -> Vec<Vector<OUTPUT>>
 }
 ```
 
-**Key Insight:** Every `clone()` on a `Vector<SIZE>` means copying SIZE f64 values (8 bytes each). Removing unnecessary clones eliminates redundant memory copy overhead.
+**Key Insight:** Every `clone()` on a `Vector<SIZE>` means copying SIZE f64
+values (8 bytes each). Removing unnecessary clones eliminates redundant memory
+copy overhead.
 
 ---
 
 #### **Optimization 2: Eliminate Memory Move Operations**
 
 **The Fix:**
-- ✅ Replaced `.fold()` and other consuming iterators with explicit loops where data moves were problematic
+
+- ✅ Replaced `.fold()` and other consuming iterators with explicit loops where
+  data moves were problematic
 - ✅ Avoided intermediate allocations from iterator chains
 - ✅ Used explicit loops for better control over memory movement
 
@@ -973,18 +1027,22 @@ for weight in &self.weight_updates {
 }
 ```
 
-**Key Insight:** Iterator methods like `.fold()` are great for functional code, but they can force move semantics. Explicit loops give you control over when data is moved vs. borrowed.
+**Key Insight:** Iterator methods like `.fold()` are great for functional code,
+but they can force move semantics. Explicit loops give you control over when
+data is moved vs. borrowed.
 
 ---
 
 #### **Optimization 3: Workspace Reuse & Memory Pooling**
 
 **The Fix:**
+
 - ✅ Introduced `Workspace` struct to hold pre-allocated buffers
 - ✅ Reuse the same memory across all sequence processing in an epoch
 - ✅ Reset workspace instead of reallocating (fast memset vs. malloc)
 
-**Impact:** ~50% speedup from previous (30s → ~15s) ⭐ **Biggest single improvement**
+**Impact:** ~50% speedup from previous (30s → ~15s) ⭐ **Biggest single
+improvement**
 
 ```rust
 // ✅ Workspace pattern - allocate once per epoch, reuse many times
@@ -1019,7 +1077,9 @@ for epoch in 0..epochs {
 ```
 
 **Why This Matters:**
-- Instead of allocating/deallocating workspace buffers **once per sequence** (28,549 times per epoch)
+
+- Instead of allocating/deallocating workspace buffers **once per sequence**
+  (28,549 times per epoch)
 - We allocate **once per epoch** and reset (1 allocation cost)
 - Memory zeroing (fast) replaces allocation/deallocation (expensive)
 
@@ -1027,12 +1087,12 @@ for epoch in 0..epochs {
 
 ### Summary of Optimizations
 
-| Optimization | Technique | Speedup from Previous | Total Improvement |
-|--------------|-----------|----------------------|-------------------|
-| **1. Clone elimination** | Remove unnecessary clones, use references | ~1.3x | 1.3x |
-| **2. Eliminate move ops** | Replace `.fold()`, explicit loops | ~1.4x | 1.8x |
-| **3. Workspace reuse** | Pre-allocate, reset instead of reallocate | ~2x | **3.6x** |
-| | **TOTAL: 60+ sec → 3 sec** | — | **~20x** ✅ |
+| Optimization              | Technique                                 | Speedup from Previous | Total Improvement |
+| ------------------------- | ----------------------------------------- | --------------------- | ----------------- |
+| **1. Clone elimination**  | Remove unnecessary clones, use references | ~1.3x                 | 1.3x              |
+| **2. Eliminate move ops** | Replace `.fold()`, explicit loops         | ~1.4x                 | 1.8x              |
+| **3. Workspace reuse**    | Pre-allocate, reset instead of reallocate | ~2x                   | **3.6x**          |
+|                           | **TOTAL: 60+ sec → 3 sec**                | —                     | **~20x** ✅       |
 
 ---
 
@@ -1040,7 +1100,8 @@ for epoch in 0..epochs {
 
 #### 🎯 **1. Memory Allocation is Your Biggest Enemy**
 
-The largest speedup (50%) came from reducing allocations, not algorithmic improvements:
+The largest speedup (50%) came from reducing allocations, not algorithmic
+improvements:
 
 ```
 Cost Breakdown (approximate):
@@ -1087,15 +1148,15 @@ for x in &items {
 
 ### Performance Tips for Your Own Projects
 
-| Do ✅ | Don't ❌ |
-|------|---------|
-| Pre-allocate buffers before hot loops | Allocate inside hot loops |
-| Use references and borrowing | Clone when you can borrow |
-| Reuse memory (fill with zeros) | Deallocate and reallocate |
-| Use explicit loops for control | Assume iterator chains are free |
-| Measure with real workloads | Benchmark isolated functions |
-| Profile first, optimize second | Guess about bottlenecks |
-| Understand allocation costs | Focus only on algorithmic complexity |
+| Do ✅                                 | Don't ❌                             |
+| ------------------------------------- | ------------------------------------ |
+| Pre-allocate buffers before hot loops | Allocate inside hot loops            |
+| Use references and borrowing          | Clone when you can borrow            |
+| Reuse memory (fill with zeros)        | Deallocate and reallocate            |
+| Use explicit loops for control        | Assume iterator chains are free      |
+| Measure with real workloads           | Benchmark isolated functions         |
+| Profile first, optimize second        | Guess about bottlenecks              |
+| Understand allocation costs           | Focus only on algorithmic complexity |
 
 ---
 
@@ -1119,7 +1180,9 @@ cargo flamegraph --bin rnn_rust
 # (Tools: valgrind, heaptrack on Linux; Instruments on macOS)
 ```
 
-**Note:** `samply` is highly recommended for this type of profiling as it provides real-time flamegraph visualization and detailed insights into hot code paths.
+**Note:** `samply` is highly recommended for this type of profiling as it
+provides real-time flamegraph visualization and detailed insights into hot code
+paths.
 
 ---
 
@@ -1176,7 +1239,8 @@ CPU Usage            ~80%        ~95%
 
 ## 📄 License
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE)
+file for details.
 
 ```
 MIT License
@@ -1219,21 +1283,27 @@ Contributions are welcome! Here's how you can help:
 
 ### Learning Resources
 
-- [The Unreasonable Effectiveness of RNNs](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) - Andrej Karpathy
-- [Understanding LSTM Networks](https://colah.github.io/posts/2015-08-Understanding-LSTMs/) - Chris Olah
-- [Backpropagation Through Time (BPTT)](https://en.wikipedia.org/wiki/Backpropagation_through_time) - Wikipedia
+- [The Unreasonable Effectiveness of RNNs](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) -
+  Andrej Karpathy
+- [Understanding LSTM Networks](https://colah.github.io/posts/2015-08-Understanding-LSTMs/) -
+  Chris Olah
+- [Backpropagation Through Time (BPTT)](https://en.wikipedia.org/wiki/Backpropagation_through_time) -
+  Wikipedia
 - [Rust Documentation](https://doc.rust-lang.org/) - Official Rust docs
 
 ### Related Projects
 
 - [tch-rs](https://github.com/LaurentMazare/tch-rs) - Rust bindings for PyTorch
-- [ndarray](https://github.com/rust-ndarray/ndarray) - N-dimensional arrays in Rust
+- [ndarray](https://github.com/rust-ndarray/ndarray) - N-dimensional arrays in
+  Rust
 - [Burn](https://github.com/burn-rs/burn) - Deep learning framework for Rust
 
 ### Datasets
 
-- [Kaggle Credit Card Fraud Detection](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud) - ~285K labeled transactions
-- [UCI Machine Learning Repository](https://archive.ics.uci.edu/) - Many datasets for testing
+- [Kaggle Credit Card Fraud Detection](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud) -
+  ~285K labeled transactions
+- [UCI Machine Learning Repository](https://archive.ics.uci.edu/) - Many
+  datasets for testing
 
 ---
 
